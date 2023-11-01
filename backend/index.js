@@ -1,15 +1,15 @@
-import express, { request, response } from "express";
-import { PORT, mongoDBURL } from "./config.js";
-import mongoose from 'mongoose';
+import express, { request, response } from 'express'
+import { PORT, mongoDBURL } from './config.js'
+import mongoose from 'mongoose'
 // import { Book } from './models/bookModel.js';
-import booksRoute from './routes/booksRoutes.js';
-import cors from 'cors';
-const app = express();
+import booksRoute from './routes/booksRoutes.js'
+import cors from 'cors'
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
 
 //Middleware for handling CORS policy
-app.use(cors());
+app.use(cors())
 
 // app.use(
 //     cors({
@@ -19,20 +19,16 @@ app.use(cors());
 //     })
 // )
 
-app.get('/', (request, response) => {
-    console.log(request);
-    return response.status(234).send('Ram Ram Bhai Sarian ne');
-});
+app.use('/books', booksRoute)
 
-app.use('/books', booksRoute);
-
-
-mongoose.connect(mongoDBURL)
-    .then(() => {
-        console.log('App connected to database');
-        app.listen(PORT, () => {
-            console.log(`App is listening to port: ${PORT}`);
-        });
-    }).catch((error) => {
-        console.log(error);
-    });
+mongoose
+  .connect(mongoDBURL)
+  .then(() => {
+    console.log('App connected to database')
+    app.listen(PORT, () => {
+      console.log(`App is listening to port: ${PORT}`)
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+  })
