@@ -1,5 +1,5 @@
 <h1>Book Haven </h1>
-<h2>IPLAB Assignment 10</h2>
+
 <h2>About this Project</h2>
 <p>Made with the MERN (MongoDB, Express, React, and Node.js) stack, this is a straightforward book store project. CRUD (Create, Read, Update, Delete) activities, including routing and CORS policy configuration, are demonstrated in this project for both the frontend and the backend.</p>
 
